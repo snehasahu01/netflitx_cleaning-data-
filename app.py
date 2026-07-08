@@ -583,7 +583,10 @@ def missing_bar_chart(df, title):
         marker_color="#D6303C",
         text=miss.values, textposition="outside",
     ))
-    fig.update_layout(**PLOTLY_TEMPLATE["layout"], title=title, height=max(280, 28 * len(miss)))
+    fig.update_layout(
+        **PLOTLY_TEMPLATE["layout"].to_plotly_json(), 
+        title=title,
+        height=max(280, 28 * len(miss)))
     return fig
 
 
@@ -713,7 +716,7 @@ with tab_quality:
     st.markdown("##### Missing values by column (raw)")
     fig = missing_bar_chart(df_raw, "")
     if fig:
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True,key="quality_missing")
     else:
         st.success("No missing values detected in the raw file.")
 
@@ -781,14 +784,14 @@ with tab_compare:
         st.markdown("##### Missing values — raw")
         fig = missing_bar_chart(df_raw, "")
         if fig:
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, use_container_width=True,key="raw_missing")
         else:
             st.success("No missing values.")
     with m2:
         st.markdown("##### Missing values — cleaned")
         fig2 = missing_bar_chart(df_clean, "")
         if fig2:
-            st.plotly_chart(fig2, use_container_width=True)
+            st.plotly_chart(fig2, use_container_width=True,key="clean_missing")
         else:
             st.success("No missing values.")
 
@@ -797,8 +800,10 @@ with tab_compare:
         vals = pd.to_numeric(df_clean["IMDb_Rating"], errors="coerce").dropna()
         if len(vals):
             fig3 = go.Figure(go.Histogram(x=vals, marker_color="#D6303C", nbinsx=20))
-            fig3.update_layout(**PLOTLY_TEMPLATE["layout"], height=320)
-            st.plotly_chart(fig3, use_container_width=True)
+            fig3.update_layout(
+                **PLOTLY_TEMPLATE["layout"].to_plotly_json(),
+                height=320)
+            st.plotly_chart(fig3, use_container_width=True,key="imdb_hist")
 
     st.markdown("##### Cleaned data preview")
     st.dataframe(df_clean.head(20), use_container_width=True, height=380)

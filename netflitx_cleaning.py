@@ -47,7 +47,7 @@ Before we do anything, we import the libraries we will use throughout the projec
 import pandas as pd
 import numpy as np
 #open CSV file
-df = pd.read_csv("netflix_movies_dirty.csv")
+df = pd.read_csv("netflix_titles-selected-columns.csv")
 
 df.head()
 

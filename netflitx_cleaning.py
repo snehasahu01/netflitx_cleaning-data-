@@ -48,9 +48,7 @@ import pandas as pd
 import numpy as np
 #open CSV file
 df = pd.read_csv("netflix_titles-selected-columns.csv")
-st.write("Loaded CSV columns:", df.columns.tolist())
-st.write("Dataset shape:", df.shape)
-st.stop()
+
 
 
 df.head()

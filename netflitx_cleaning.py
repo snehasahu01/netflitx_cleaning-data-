@@ -284,7 +284,7 @@ def clean_genre(genre):
 genre = "Inception , Drama"
 genre.split(",")[0]
 
-df['Genre'] = df['Genre'].apply(clean_genre)
+df['listed_in'] = df['listed_in'].apply(clean_genre)
 
 """✅ **Explanation:** We set a sensible boundary: 1900 to 2025. Any value outside that range is treated as an error and replaced with `NaN`. We do not guess the correct year because we have no way of knowing what it should be.
 

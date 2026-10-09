@@ -214,7 +214,7 @@ def clean_title(title):
     title = title.title()
     return title
 
-df["Title"] = df["Title"].apply(clean_title)
+df["title"] = df["title"].apply(clean_title)
 
 title = "Inception             space"
 " ".join(title.split())

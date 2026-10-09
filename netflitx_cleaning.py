@@ -115,7 +115,7 @@ We count how many unique IDs we have and compare it to the total number of rows.
 """
 
 # total rows vs unique movie_ids
-duplicate_ids = df["Movie_ID"].nunique()
+duplicate_ids = df["show_id"].nunique()
 
 # find which movie_ids appear more than once
 id_count =df["Movie_ID"].value_counts()

@@ -130,7 +130,7 @@ We will keep the **first** occurrence of each Movie_ID and remove the rest.
 
 """
 
-df = df.drop_duplicates(subset="Movie_ID", keep="first")
+df = df.drop_duplicates(subset="show_id", keep="first")
 
 
 
